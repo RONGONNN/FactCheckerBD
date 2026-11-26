@@ -21,14 +21,14 @@ export function MainNav({ onNavigate }: { onNavigate: () => void }) {
   const pathname = usePathname();
 
   return (
-    <nav className="flex flex-col gap-1">
+    <nav className="flex flex-col gap-1 lg:flex-row">
       {LINKS.map(({ href, label }) => (
         <Link
           key={href}
           href={href}
           onClick={onNavigate}
           aria-current={pathname === href ? 'page' : undefined}
-          className={`block rounded-lg px-3 py-2 hover:bg-slate-100 aria-[current=page]:bg-blue-100 aria-[current=page]:font-semibold dark:hover:bg-slate-800 dark:aria-[current=page]:bg-blue-950 ${focusRing}`}
+          className={`rounded-full px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-navy aria-[current=page]:bg-orange-50 aria-[current=page]:text-accent-strong ${focusRing}`}
         >
           {t.nav[label]}
         </Link>
