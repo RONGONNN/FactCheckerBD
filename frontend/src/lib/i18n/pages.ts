@@ -18,7 +18,7 @@ const bn: Record<InfoPageKey, InfoContent> = {
       },
       {
         heading: '২. অনুমোদিত উৎসে খোঁজা',
-        paragraphs: ['শুধু অনুমোদিত ফ্যাক্ট-চেকিং ও সংবাদ ওয়েবসাইটে প্রাসঙ্গিক পাতা খোঁজা হয়।'],
+        paragraphs: ['শুধু দেশ-বিদেশের অনুমোদিত ফ্যাক্ট-চেকিং ও সংবাদ ওয়েবসাইটে প্রাসঙ্গিক পাতা খোঁজা হয়।'],
       },
       {
         heading: '৩. প্রমাণ বিশ্লেষণ',
@@ -91,7 +91,7 @@ const en: Record<InfoPageKey, InfoContent> = {
       {
         heading: '2. Search approved sources',
         paragraphs: [
-          'Only approved fact-checking and news websites are searched for related pages.',
+          'Only approved fact-checking and news websites, from Bangladesh and around the world, are searched for related pages.',
         ],
       },
       {

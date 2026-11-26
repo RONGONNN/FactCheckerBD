@@ -29,7 +29,7 @@ export const homeContent: Record<Language, HomeContent> = {
     badge: 'AI সহায়তায় তথ্য যাচাই',
     titleTop: 'শেয়ার করার আগে',
     titleAccent: 'সত্যতা যাচাই করুন',
-    lead: 'বাংলা বা ইংরেজিতে যেকোনো দাবি লিখুন। অনুমোদিত ফ্যাক্ট-চেকিং ও সংবাদ উৎস থেকে প্রমাণ খুঁজে মূল লিংকসহ ফলাফল দেখানো হবে।',
+    lead: 'বাংলা বা ইংরেজিতে যেকোনো দাবি লিখুন। দেশ-বিদেশের অনুমোদিত ফ্যাক্ট-চেকিং ও সংবাদ উৎস থেকে প্রমাণ খুঁজে মূল লিংকসহ ফলাফল দেখানো হবে।',
     start: 'যাচাই শুরু করুন',
     learnMore: 'কীভাবে কাজ করে',
     features: [
@@ -48,7 +48,7 @@ export const homeContent: Record<Language, HomeContent> = {
     ],
     bannerTitle: 'গুজব ছড়ানোর আগে একবার থামুন।',
     bannerText: 'একটি যাচাই অনেক মানুষকে ভুল তথ্য থেকে বাঁচাতে পারে।',
-    footerAbout: 'বাংলাদেশের সামাজিক যোগাযোগমাধ্যমে ছড়ানো দাবি যাচাইয়ের একটি একাডেমিক প্রকল্প।',
+    footerAbout: 'সামাজিক যোগাযোগমাধ্যমে ছড়ানো দেশ-বিদেশের দাবি যাচাইয়ের একটি একাডেমিক প্রকল্প।',
     footerExplore: 'ঘুরে দেখুন',
     footerProject: 'প্রকল্প',
   },
@@ -56,7 +56,7 @@ export const homeContent: Record<Language, HomeContent> = {
     badge: 'AI-assisted fact-checking',
     titleTop: 'Before you share,',
     titleAccent: 'check the facts',
-    lead: 'Write any claim in Bangla or English. Evidence is gathered from approved fact-checking and news sources and shown with links to the originals.',
+    lead: 'Write any claim in Bangla or English. Evidence is gathered from approved fact-checking and news sources around the world and shown with links to the originals.',
     start: 'Start checking',
     learnMore: 'How it works',
     features: [
@@ -75,7 +75,8 @@ export const homeContent: Record<Language, HomeContent> = {
     ],
     bannerTitle: 'Pause before a rumour spreads.',
     bannerText: 'One check can keep many people away from false information.',
-    footerAbout: 'An academic project for checking claims shared on social media in Bangladesh.',
+    footerAbout:
+      'An academic project for checking claims shared on social media, from Bangladesh and around the world.',
     footerExplore: 'Explore',
     footerProject: 'Project',
   },

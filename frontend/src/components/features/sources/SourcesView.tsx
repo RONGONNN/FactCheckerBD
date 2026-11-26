@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { ApiError, getSources, type ApiErrorKind } from '../../../lib/api/client';
 import { useLanguage } from '../../../lib/i18n/LanguageProvider';
 import type { ApprovedSource } from '../../../types/api';
-import { card, focusRing, mutedText, secondaryButton, pageTitle } from '../../ui/styles';
+import { pageTitle, secondaryButton } from '../../ui/styles';
+import { SourceGroups } from './SourceGroups';
 
 type State = { sources: ApprovedSource[] } | { error: ApiErrorKind } | null;
 
@@ -43,24 +44,7 @@ export function SourcesView() {
         </div>
       )}
       {state && 'sources' in state && state.sources.length === 0 && <p>{t.sourcesPage.empty}</p>}
-      {state && 'sources' in state && (
-        <ul className="grid gap-2 sm:grid-cols-2">
-          {state.sources.map((source) => (
-            <li key={source.name} className={card}>
-              <p className="font-semibold">{source.name}</p>
-              <p className={mutedText}>{t.sourceTypes[source.type]}</p>
-              <a
-                href={`https://${source.domain}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`text-sm break-words text-blue-700 underline ${focusRing}`}
-              >
-                {source.domain}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+      {state && 'sources' in state && <SourceGroups sources={state.sources} />}
     </div>
   );
 }
