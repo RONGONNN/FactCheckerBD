@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import OpenAI from 'openai';
+import { OpenAI } from 'openai';
 import type { Response } from 'openai/resources/responses/responses';
 import { activeSources } from '../src/config/sources.js';
 import { extractSearchOutput, parseJson, toUpstreamError } from '../src/services/openai.service.js';

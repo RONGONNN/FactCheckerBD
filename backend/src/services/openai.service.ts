@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import { OpenAI } from 'openai';
 import { zodTextFormat } from 'openai/helpers/zod';
 import type { Response } from 'openai/resources/responses/responses';
 import { analysisSchema } from '../schemas/analysis.schema.js';
