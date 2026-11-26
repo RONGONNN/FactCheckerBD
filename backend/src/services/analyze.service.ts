@@ -29,7 +29,7 @@ export function insufficientAnalysis(language: Language): Analysis {
 }
 
 function cleanEvidence(
-  items: ModelAnalysis['supporting'],
+  items: ModelAnalysis['evidenceClaimIsTrue'],
   knownIds: Set<number>,
   claimDate: string | null,
 ): Evidence[] {
@@ -66,8 +66,8 @@ function enforceRules(
   const cleaned: Analysis = {
     verdict: analysis.verdict,
     explanation: stripLinks(analysis.explanation),
-    supporting: cleanEvidence(analysis.supporting, knownIds, claimDate),
-    contradicting: cleanEvidence(analysis.contradicting, knownIds, claimDate),
+    supporting: cleanEvidence(analysis.evidenceClaimIsTrue, knownIds, claimDate),
+    contradicting: cleanEvidence(analysis.evidenceClaimIsFalse, knownIds, claimDate),
   };
   return isBacked(cleaned) ? cleaned : insufficientAnalysis(language);
 }

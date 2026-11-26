@@ -7,14 +7,33 @@
   { "name": "Prothom Alo", "domain": "prothomalo.com", "type": "news", "active": true },
   { "name": "The Daily Star", "domain": "thedailystar.net", "type": "news", "active": true },
   { "name": "bdnews24.com", "domain": "bdnews24.com", "type": "news", "active": true },
-  {
-    "name": "BBC News Bangla",
-    "domain": "bbc.com",
-    "pathPrefix": "/bengali",
-    "type": "news",
-    "active": false
-  },
   { "name": "BSS", "domain": "bssnews.net", "type": "news", "active": true },
   { "name": "Dhaka Tribune", "domain": "dhakatribune.com", "type": "news", "active": true },
-  { "name": "The Business Standard", "domain": "tbsnews.net", "type": "news", "active": true }
+  { "name": "The Business Standard", "domain": "tbsnews.net", "type": "news", "active": true },
+  { "name": "AFP Fact Check", "domain": "factcheck.afp.com", "type": "factcheck", "active": true },
+  { "name": "Snopes", "domain": "snopes.com", "type": "factcheck", "active": true },
+  { "name": "PolitiFact", "domain": "politifact.com", "type": "factcheck", "active": true },
+  { "name": "FactCheck.org", "domain": "factcheck.org", "type": "factcheck", "active": true },
+  { "name": "Full Fact", "domain": "fullfact.org", "type": "factcheck", "active": true },
+  { "name": "Lead Stories", "domain": "leadstories.com", "type": "factcheck", "active": true },
+  { "name": "Africa Check", "domain": "africacheck.org", "type": "factcheck", "active": true },
+  { "name": "BOOM", "domain": "boomlive.in", "type": "factcheck", "active": true },
+  { "name": "Alt News", "domain": "altnews.in", "type": "factcheck", "active": true },
+  { "name": "Chequeado", "domain": "chequeado.com", "type": "factcheck", "active": true },
+  { "name": "Maldita.es", "domain": "maldita.es", "type": "factcheck", "active": true },
+  { "name": "Reuters", "domain": "reuters.com", "type": "news", "active": true },
+  { "name": "Associated Press", "domain": "apnews.com", "type": "news", "active": true },
+  {
+    "name": "BBC",
+    "domain": "bbc.com",
+    "excludePaths": ["/storyworks"],
+    "type": "news",
+    "active": true
+  },
+  { "name": "Al Jazeera", "domain": "aljazeera.com", "type": "news", "active": true },
+  { "name": "DW", "domain": "dw.com", "type": "news", "active": true },
+  { "name": "France 24", "domain": "france24.com", "type": "news", "active": true },
+  { "name": "The Guardian", "domain": "theguardian.com", "type": "news", "active": true },
+  { "name": "NPR", "domain": "npr.org", "type": "news", "active": true },
+  { "name": "UN News", "domain": "news.un.org", "type": "news", "active": true }
 ]

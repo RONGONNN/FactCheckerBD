@@ -12,8 +12,8 @@ const answer = {
   claimDate: null,
   verdict: 'contradicted',
   explanation: 'Denied, see https://invented.example/page',
-  supporting: [],
-  contradicting: [
+  evidenceClaimIsTrue: [],
+  evidenceClaimIsFalse: [
     { text: 'It is denied.', sourceIds: [1, 99], aboutSameClaim: true, eventDate: null },
   ],
 };
@@ -55,7 +55,7 @@ describe('POST /api/check', () => {
       calls.domains,
       activeSources.map((source) => source.domain),
     );
-    assert.ok(!calls.domains.includes('bbc.com'));
+    assert.ok(!calls.domains.includes('factcheckbd.com'));
   });
 
   it('drops unapproved, duplicate, invented links and unknown source ids', async () => {
@@ -90,7 +90,9 @@ describe('POST /api/check', () => {
   it('downgrades a verdict that no retrieved source backs', async () => {
     const unbacked = {
       ...answer,
-      contradicting: [{ text: 'Denied.', sourceIds: [42], aboutSameClaim: true, eventDate: null }],
+      evidenceClaimIsFalse: [
+        { text: 'Denied.', sourceIds: [42], aboutSameClaim: true, eventDate: null },
+      ],
     };
     const { llm } = fakeLlm(searchOutput(ARTICLE), unbacked);
     const { body } = await post({ llm, sources: activeSources }, { claim: 'x' });
@@ -101,7 +103,7 @@ describe('POST /api/check', () => {
   it('ignores evidence about another date or event', async () => {
     const stale = {
       ...answer,
-      contradicting: [
+      evidenceClaimIsFalse: [
         {
           text: 'An older rumour was false.',
           sourceIds: [1],
@@ -120,7 +122,9 @@ describe('POST /api/check', () => {
     const check = async (eventDate: string | null) => {
       const dated = {
         ...answer,
-        contradicting: [{ text: 'Denied.', sourceIds: [1], aboutSameClaim: true, eventDate }],
+        evidenceClaimIsFalse: [
+          { text: 'Denied.', sourceIds: [1], aboutSameClaim: true, eventDate },
+        ],
       };
       const { llm } = fakeLlm(searchOutput(ARTICLE), dated);
       const claim = 'Schools close tomorrow';

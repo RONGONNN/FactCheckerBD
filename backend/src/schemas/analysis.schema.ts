@@ -18,13 +18,16 @@ export const analysisSchema = z.object({
   claimDate: z.string().nullable(),
   verdict: z.enum(['supported', 'contradicted', 'mixed', 'insufficient']),
   explanation: z.string().min(1),
-  supporting: z.array(modelEvidenceSchema),
-  contradicting: z.array(modelEvidenceSchema),
+  /** Named after the claim, so a debunk is not listed as "supporting" the verdict. */
+  evidenceClaimIsTrue: z.array(modelEvidenceSchema),
+  evidenceClaimIsFalse: z.array(modelEvidenceSchema),
 });
 
 export type ModelAnalysis = z.infer<typeof analysisSchema>;
 export type Evidence = z.infer<typeof evidenceSchema>;
-export type Analysis = Omit<ModelAnalysis, 'claimDate' | 'supporting' | 'contradicting'> & {
+export type Analysis = {
+  verdict: ModelAnalysis['verdict'];
+  explanation: string;
   supporting: Evidence[];
   contradicting: Evidence[];
 };

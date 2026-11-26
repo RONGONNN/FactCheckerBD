@@ -93,7 +93,7 @@ export function createOpenAiClient(
           {
             type: 'web_search',
             filters: { allowed_domains: allowedDomains },
-            user_location: { type: 'approximate', country: 'BD' },
+            user_location: { type: 'approximate' },
           },
         ],
       });
