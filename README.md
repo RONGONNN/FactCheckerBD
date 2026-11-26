@@ -337,6 +337,20 @@ The app has not been deployed yet.
 | Backend (any Node host) | `backend` | `npm ci --include=dev && npm run build` | `npm start` |
 | Frontend (for example Vercel) | `frontend` | `npm run build` | `npm start` |
 
+### Backend on Vercel
+
+Create a separate Vercel project with `backend` as the root directory. [`backend/index.ts`](backend/index.ts)
+is the entry point.
+
+- Set `OPENAI_API_KEY` and `FRONTEND_ORIGIN` (the frontend's URL). `OPENAI_MODEL` and the limits are
+  optional. `PORT` and `FEEDBACK_FILE` are not used there.
+- Feedback is written to the runtime logs, not to a file, and Vercel keeps those only for a limited
+  time. Add a database store before relying on it.
+- Rate limits and caches are per running instance, so they are weaker than on a single server. Set a
+  monthly budget in the OpenAI dashboard.
+
+### All hosts
+
 - Set `FRONTEND_ORIGIN` on the backend and `NEXT_PUBLIC_API_URL` on the frontend (before building).
 - Behind a proxy, set `TRUST_PROXY_HOPS` and test that the rate limit separates visitors.
 - On hosts with a temporary file system, the feedback file is lost on restart. Use a persistent disk

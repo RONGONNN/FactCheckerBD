@@ -20,3 +20,12 @@ export function createFileFeedbackStore(path: string): FeedbackStore {
     },
   };
 }
+
+/** For hosts without a writable disk. The host decides how long its logs are kept. */
+export function createLogFeedbackStore(): FeedbackStore {
+  return {
+    async save(record) {
+      console.log(`feedback ${JSON.stringify(record)}`);
+    },
+  };
+}
