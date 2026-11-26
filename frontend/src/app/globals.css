@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+@theme inline {
+  /* System fonts, so Bangla renders without downloading a web font. */
+  --font-sans: system-ui, 'Nirmala UI', 'Noto Sans Bengali', sans-serif;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+}
