@@ -37,7 +37,7 @@ export function ResultDetails({ result }: { result: CheckResult }) {
         sources={result.sources}
       />
       <SourceList sources={result.sources} />
-      <p className="rounded-lg border border-amber-400 bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950 dark:text-amber-100">
+      <p className="rounded-lg border border-amber-400 bg-amber-50 p-3 text-sm text-amber-950">
         {t.result.warning}
       </p>
       {checkedAt && (

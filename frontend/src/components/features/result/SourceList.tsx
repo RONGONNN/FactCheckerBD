@@ -16,7 +16,7 @@ function SourceCard({ source }: { source: Source }) {
         href={source.url}
         target="_blank"
         rel="noopener noreferrer"
-        className={`font-medium break-words text-blue-700 underline dark:text-blue-300 ${focusRing}`}
+        className={`font-medium break-words text-blue-700 underline ${focusRing}`}
       >
         {source.title}
       </a>

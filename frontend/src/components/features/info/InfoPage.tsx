@@ -2,7 +2,7 @@
 
 import { useLanguage } from '../../../lib/i18n/LanguageProvider';
 import { infoPages, type InfoPageKey } from '../../../lib/i18n/pages';
-import { card } from '../../ui/styles';
+import { card, pageTitle } from '../../ui/styles';
 
 export function InfoPage({ page }: { page: InfoPageKey }) {
   const { language } = useLanguage();
@@ -10,7 +10,7 @@ export function InfoPage({ page }: { page: InfoPageKey }) {
 
   return (
     <article className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">{title}</h1>
+      <h1 className={pageTitle}>{title}</h1>
       {sections.map((section) => (
         <section key={section.heading} className={card}>
           <h2 className="mb-1 font-semibold">{section.heading}</h2>

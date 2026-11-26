@@ -74,7 +74,7 @@ export function FeedbackForm({ title, checkId }: { title: string; checkId?: stri
         {status === 'sending' ? t.feedback.sending : t.feedback.submit}
       </button>
       {problem && (
-        <p role="alert" className="text-sm font-medium text-red-700 dark:text-red-400">
+        <p role="alert" className="text-sm font-medium text-red-700">
           {problem}
         </p>
       )}

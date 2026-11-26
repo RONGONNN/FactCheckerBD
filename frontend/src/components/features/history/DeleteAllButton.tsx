@@ -26,7 +26,7 @@ export function DeleteAllButton() {
     <div className="flex flex-wrap gap-2">
       <button
         type="button"
-        className={`${secondaryButton} border-red-600 text-red-700 dark:text-red-400`}
+        className={`${secondaryButton} border-red-600 text-red-700`}
         onClick={() => {
           clearResults();
           setConfirming(false);

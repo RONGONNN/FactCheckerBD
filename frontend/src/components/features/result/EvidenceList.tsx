@@ -33,7 +33,7 @@ export function EvidenceList({ title, items, sources }: EvidenceListProps) {
                     rel="noopener noreferrer"
                     title={source.title}
                     aria-label={`${t.result.source} ${source.id}: ${source.publisher}`}
-                    className={`mr-1 inline-block rounded bg-blue-100 px-1.5 text-sm font-semibold text-blue-800 underline dark:bg-blue-950 dark:text-blue-200 ${focusRing}`}
+                    className={`mr-1 inline-block rounded bg-blue-100 px-1.5 text-sm font-semibold text-blue-800 underline ${focusRing}`}
                   >
                     [{source.id}] {source.publisher}
                   </a>

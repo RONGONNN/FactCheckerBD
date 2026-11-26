@@ -22,7 +22,7 @@ export function VerdictChart({ counts }: { counts: Record<Verdict, number> }) {
           </div>
           <div aria-hidden="true" className="mt-1 h-2.5 border-l border-slate-400">
             <div
-              className="h-full rounded-r bg-[#2a78d6] dark:bg-[#3987e5]"
+              className="h-full rounded-r bg-[#2a78d6]"
               style={{ width: `${(counts[verdict] / largest) * 100}%` }}
             />
           </div>

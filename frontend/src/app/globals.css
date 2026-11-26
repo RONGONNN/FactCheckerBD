@@ -1,10 +1,29 @@
 @import 'tailwindcss';
 
+/* The site has a light theme only. */
+:root {
+  color-scheme: light;
+}
+
 @theme inline {
-  /* System fonts, so Bangla renders without downloading a web font. */
-  --font-sans: system-ui, 'Nirmala UI', 'Noto Sans Bengali', sans-serif;
+  --font-sans: var(--font-latin), var(--font-bangla), system-ui, 'Nirmala UI', sans-serif;
+  --color-navy: #0c2d6b;
+  --color-accent: #f26a1b;
+  /* Darker shades keep white button text readable. */
+  --color-accent-strong: #c2500a;
+  --color-accent-hover: #a34308;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+  @apply bg-white text-slate-800;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

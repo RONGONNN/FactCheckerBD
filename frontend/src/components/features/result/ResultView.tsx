@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useLanguage } from '../../../lib/i18n/LanguageProvider';
 import { useStoredResults } from '../../../lib/storage/useStoredResults';
-import { mutedText, primaryButton } from '../../ui/styles';
+import { mutedText, primaryButton, pageTitle } from '../../ui/styles';
 import { FeedbackForm } from '../feedback/FeedbackForm';
 import { ResultDetails } from './ResultDetails';
 
@@ -30,7 +30,7 @@ export function ResultView() {
 
   return (
     <div className="flex flex-col items-start gap-3">
-      <h1 className="text-2xl font-bold">{t.result.missingTitle}</h1>
+      <h1 className={pageTitle}>{t.result.missingTitle}</h1>
       <p className={mutedText}>{t.result.missingText}</p>
       <Link href="/" className={primaryButton}>
         {t.result.another}

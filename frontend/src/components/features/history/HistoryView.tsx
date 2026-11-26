@@ -6,7 +6,7 @@ import { filterResults, VERDICTS } from '../../../lib/stats';
 import { removeResult } from '../../../lib/storage/results';
 import { useStoredResults } from '../../../lib/storage/useStoredResults';
 import type { Verdict } from '../../../types/api';
-import { card, field, mutedText, secondaryButton } from '../../ui/styles';
+import { card, field, mutedText, secondaryButton, pageTitle } from '../../ui/styles';
 import { DeleteAllButton } from './DeleteAllButton';
 import { ResultSummary } from './ResultSummary';
 
@@ -21,7 +21,7 @@ export function HistoryView() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">{t.history.title}</h1>
+      <h1 className={pageTitle}>{t.history.title}</h1>
       <p className={mutedText}>{t.history.limit}</p>
 
       {results.length === 0 ? (

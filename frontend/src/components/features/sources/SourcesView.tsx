@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { ApiError, getSources, type ApiErrorKind } from '../../../lib/api/client';
 import { useLanguage } from '../../../lib/i18n/LanguageProvider';
 import type { ApprovedSource } from '../../../types/api';
-import { card, focusRing, mutedText, secondaryButton } from '../../ui/styles';
+import { card, focusRing, mutedText, secondaryButton, pageTitle } from '../../ui/styles';
 
 type State = { sources: ApprovedSource[] } | { error: ApiErrorKind } | null;
 
@@ -31,7 +31,7 @@ export function SourcesView() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">{t.sourcesPage.title}</h1>
+      <h1 className={pageTitle}>{t.sourcesPage.title}</h1>
       <p>{t.sourcesPage.intro}</p>
       {state === null && <p role="status">{t.sourcesPage.loading}</p>}
       {state && 'error' in state && (
@@ -53,7 +53,7 @@ export function SourcesView() {
                 href={`https://${source.domain}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-sm break-words text-blue-700 underline dark:text-blue-300 ${focusRing}`}
+                className={`text-sm break-words text-blue-700 underline ${focusRing}`}
               >
                 {source.domain}
               </a>
