@@ -32,6 +32,13 @@ describe('OpenAI adapter', () => {
     assert.deepEqual(source?.findings, ['The ministry denied it.']);
   });
 
+  it('rejects sponsored sections of an approved news site', () => {
+    const approved = (url: string) =>
+      collectSources({ text: 'x', citations: [{ url, title: 't', startIndex: 0 }] }, activeSources);
+    assert.equal(approved('https://www.bbc.com/storyworks/travel/page').length, 0);
+    assert.equal(approved('https://www.bbc.com/news/articles/page').length, 1);
+  });
+
   it('returns null for text that is not JSON', () => {
     assert.equal(parseJson('not json'), null);
   });

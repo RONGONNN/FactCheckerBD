@@ -5,6 +5,8 @@ const sourceSchema = z.object({
   name: z.string().min(1),
   domain: z.hostname(),
   pathPrefix: z.string().startsWith('/').optional(),
+  /** Parts of the site that are not journalism, such as sponsored content. */
+  excludePaths: z.array(z.string().startsWith('/')).optional(),
   type: z.enum(['factcheck', 'news']),
   active: z.boolean(),
 });

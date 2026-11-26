@@ -18,12 +18,17 @@ export function normalizeUrl(raw: string): string | null {
   return url.toString();
 }
 
+function isUnder(pathname: string, prefix: string): boolean {
+  return pathname === prefix || pathname.startsWith(`${prefix}/`);
+}
+
 export function findSource(url: string, sources: Source[]): Source | undefined {
   const { hostname, pathname } = new URL(url);
   return sources.find(
-    ({ domain, pathPrefix }) =>
+    ({ domain, pathPrefix, excludePaths }) =>
       (hostname === domain || hostname.endsWith(`.${domain}`)) &&
-      (!pathPrefix || pathname === pathPrefix || pathname.startsWith(`${pathPrefix}/`)),
+      (!pathPrefix || isUnder(pathname, pathPrefix)) &&
+      !excludePaths?.some((path) => isUnder(pathname, path)),
   );
 }
 
