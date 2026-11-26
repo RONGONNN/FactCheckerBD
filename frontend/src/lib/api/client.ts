@@ -67,6 +67,12 @@ export function checkClaim(
   return request('/api/check', checkResultSchema, { body: { claim, language }, signal });
 }
 
+export async function getExamples(language: Language, signal?: AbortSignal): Promise<string[]> {
+  const schema = z.object({ claims: z.array(z.string()) });
+  const { claims } = await request(`/api/examples?language=${language}`, schema, { signal });
+  return claims;
+}
+
 export async function getSources(signal?: AbortSignal): Promise<ApprovedSource[]> {
   const { sources } = await request('/api/sources', sourcesResponseSchema, { signal });
   return sources;

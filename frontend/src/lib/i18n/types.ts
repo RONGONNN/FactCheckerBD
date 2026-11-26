@@ -55,6 +55,8 @@ export interface Messages {
     placeholder: string;
     submit: string;
     examplesTitle: string;
+    suggestedTitle: string;
+    suggesting: string;
     examples: string[];
     empty: string;
   };

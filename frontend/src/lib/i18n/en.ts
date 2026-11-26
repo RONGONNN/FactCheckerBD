@@ -60,6 +60,8 @@ export const en: Messages = {
     placeholder: 'Write in Bangla or English…',
     submit: 'Check claim',
     examplesTitle: 'Examples',
+    suggestedTitle: 'Suggested by AI (not verified)',
+    suggesting: 'AI is suggesting claims…',
     examples: [
       'All schools in Bangladesh will be closed tomorrow.',
       'Trains run across the Padma Bridge.',

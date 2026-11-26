@@ -3,15 +3,9 @@
 import { useState, type FormEvent } from 'react';
 import { useLanguage } from '../../../lib/i18n/LanguageProvider';
 import { MAX_CLAIM_LENGTH } from '../../../types/api';
-import {
-  card,
-  field,
-  mutedText,
-  primaryButton,
-  secondaryButton,
-  sectionTitle,
-} from '../../ui/styles';
+import { card, field, mutedText, primaryButton, sectionTitle } from '../../ui/styles';
 import { CheckProgress } from './CheckProgress';
+import { ExampleClaims } from './ExampleClaims';
 import { useClaimCheck } from './useClaimCheck';
 
 export function ClaimForm() {
@@ -71,25 +65,7 @@ export function ClaimForm() {
 
       {checking && <CheckProgress onCancel={cancel} />}
 
-      <section aria-labelledby="examples-title" className="flex flex-col gap-2">
-        <h2 id="examples-title" className="font-semibold">
-          {t.claim.examplesTitle}
-        </h2>
-        <ul className="flex flex-col items-start gap-2">
-          {t.claim.examples.map((example) => (
-            <li key={example}>
-              <button
-                type="button"
-                className={`${secondaryButton} text-left`}
-                disabled={checking}
-                onClick={() => updateClaim(example)}
-              >
-                {example}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <ExampleClaims disabled={checking} onPick={updateClaim} />
 
       <p className={mutedText}>{t.disclaimer}</p>
     </div>
