@@ -14,6 +14,15 @@ describe('HTTP app', () => {
     app.close();
   });
 
+  it('greets visitors on the root path', async () => {
+    const response = await fetch(`${app.baseUrl}/`);
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), {
+      message: 'FactCheckerBD API is running.',
+      health: '/api/health',
+    });
+  });
+
   it('reports health', async () => {
     const response = await fetch(`${app.baseUrl}/api/health`);
     assert.equal(response.status, 200);

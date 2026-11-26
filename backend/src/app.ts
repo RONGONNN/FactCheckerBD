@@ -18,6 +18,10 @@ export function createApp(
   app.use(securityHeaders);
   app.use(cors(config.frontendOrigin));
   app.use(express.json({ limit: '10kb' }));
+  // Someone opening the bare domain should see that the server is up.
+  app.get('/', (_req, res) => {
+    res.json({ message: 'FactCheckerBD API is running.', health: '/api/health' });
+  });
   app.use('/api', createApiRouter(dependencies, config));
   app.use(notFound);
   app.use(errorHandler);
