@@ -1,5 +1,10 @@
+import { PageContainer } from '../../components/layout/PageContainer';
 import { InfoPage } from '../../components/features/info/InfoPage';
 
 export default function HowItWorksPage() {
-  return <InfoPage page="howItWorks" />;
+  return (
+    <PageContainer>
+      <InfoPage page="howItWorks" />
+    </PageContainer>
+  );
 }

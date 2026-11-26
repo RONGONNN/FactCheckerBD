@@ -1,5 +1,10 @@
+import { PageContainer } from '../../components/layout/PageContainer';
 import { ContactView } from '../../components/features/feedback/ContactView';
 
 export default function ContactPage() {
-  return <ContactView />;
+  return (
+    <PageContainer>
+      <ContactView />
+    </PageContainer>
+  );
 }

@@ -1,5 +1,10 @@
+import { PageContainer } from '../../components/layout/PageContainer';
 import { InfoPage } from '../../components/features/info/InfoPage';
 
 export default function AboutPage() {
-  return <InfoPage page="about" />;
+  return (
+    <PageContainer>
+      <InfoPage page="about" />
+    </PageContainer>
+  );
 }

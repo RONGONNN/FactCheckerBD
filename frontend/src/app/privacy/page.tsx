@@ -1,5 +1,10 @@
+import { PageContainer } from '../../components/layout/PageContainer';
 import { InfoPage } from '../../components/features/info/InfoPage';
 
 export default function PrivacyPage() {
-  return <InfoPage page="privacy" />;
+  return (
+    <PageContainer>
+      <InfoPage page="privacy" />
+    </PageContainer>
+  );
 }

@@ -1,5 +1,10 @@
+import { PageContainer } from '../../components/layout/PageContainer';
 import { SourcesView } from '../../components/features/sources/SourcesView';
 
 export default function SourcesPage() {
-  return <SourcesView />;
+  return (
+    <PageContainer>
+      <SourcesView />
+    </PageContainer>
+  );
 }
