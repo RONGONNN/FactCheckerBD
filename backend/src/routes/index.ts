@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import type { AppConfig } from '../config/appConfig.js';
 import { createCheckController } from '../controllers/check.controller.js';
+import { createExamplesController } from '../controllers/examples.controller.js';
 import { createFeedbackController } from '../controllers/feedback.controller.js';
 import { getHealth } from '../controllers/health.controller.js';
 import { createSourcesController } from '../controllers/sources.controller.js';
@@ -10,6 +11,7 @@ import { checkRequestSchema } from '../schemas/check.schema.js';
 import { feedbackRequestSchema } from '../schemas/feedback.schema.js';
 import type { CheckDependencies } from '../services/check.service.js';
 import { createCheckRunner } from '../services/checkRunner.js';
+import { createExampleProvider } from '../services/examples.service.js';
 import type { FeedbackStore } from '../services/feedbackStore.js';
 import { createRateLimiter } from '../services/rateLimiter.js';
 
@@ -26,7 +28,10 @@ export function createApiRouter(dependencies: AppDependencies, config: AppConfig
     dailyLimit: config.dailyCheckLimit,
   });
 
+  const getExamples = createExampleProvider(dependencies.llm, dependencies.sources);
+
   router.get('/health', getHealth);
+  router.get('/examples', createExamplesController(getExamples));
   router.get('/sources', createSourcesController(dependencies.sources));
   // Invalid requests cost nothing, so they are rejected before they count against a limit.
   router.post(

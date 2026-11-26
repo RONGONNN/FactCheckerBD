@@ -47,6 +47,9 @@ export function fakeLlm(output: SearchOutput, ...answers: unknown[]) {
       calls.analyze += 1;
       return answers[Math.min(calls.analyze, answers.length) - 1];
     },
+    async suggest() {
+      return { claims: [] };
+    },
   };
   return { llm, calls };
 }

@@ -139,6 +139,7 @@ describe('POST /api/check', () => {
     const { llm } = fakeLlm(searchOutput(ARTICLE), answer);
     const inputs: string[] = [];
     const spy = {
+      ...llm,
       search: (prompt: Prompt, domains: string[]) => {
         inputs.push(prompt.input);
         return llm.search(prompt, domains);

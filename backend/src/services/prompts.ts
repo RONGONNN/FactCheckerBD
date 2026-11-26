@@ -72,3 +72,18 @@ export function buildAnalysisPrompt(
     }),
   };
 }
+
+export function buildSuggestionPrompt(language: Language, count: number, today: string): Prompt {
+  return {
+    instructions: [
+      'Suggest claims that visitors of a fact-checking website could try checking.',
+      'Search the fact-checking sites for recent rumours of public interest, from Bangladesh and the world.',
+      `Return ${count} different claims, each one short sentence stating the rumour itself, without any verdict.`,
+      'Pick topics such as health, science, technology, disasters or public services.',
+      'Never choose accusations about a named person, or anything about religion, ethnicity, violence or elections.',
+      `Write in simple ${LANGUAGE_NAMES[language]}. Never write a link.`,
+      UNTRUSTED_DATA_RULE,
+    ].join('\n'),
+    input: JSON.stringify({ today }),
+  };
+}

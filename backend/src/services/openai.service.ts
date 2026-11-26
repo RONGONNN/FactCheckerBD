@@ -3,13 +3,14 @@ import { zodTextFormat } from 'openai/helpers/zod';
 import type { Response } from 'openai/resources/responses/responses';
 import { analysisSchema } from '../schemas/analysis.schema.js';
 import { AppError } from '../utils/AppError.js';
+import { suggestionsSchema } from './examples.service.js';
 import type { LlmClient, SearchOutput } from './llm.js';
 
 const TIMEOUT_MS = 60_000;
 const UNAVAILABLE_MESSAGE = 'Claim checking is not available right now.';
 
 export interface Usage {
-  step: 'search' | 'analyze';
+  step: 'search' | 'analyze' | 'suggest';
   inputTokens: number;
   outputTokens: number;
   searchCalls: number;
@@ -84,20 +85,30 @@ export function createOpenAiClient(
     }
   }
 
+  const webSearch = (allowedDomains: string[]) => ({
+    tool_choice: 'required' as const,
+    tools: [
+      {
+        type: 'web_search' as const,
+        filters: { allowed_domains: allowedDomains },
+        user_location: { type: 'approximate' as const },
+      },
+    ],
+  });
+
   return {
     async search(prompt, allowedDomains) {
-      const response = await request('search', {
-        ...prompt,
-        tool_choice: 'required',
-        tools: [
-          {
-            type: 'web_search',
-            filters: { allowed_domains: allowedDomains },
-            user_location: { type: 'approximate' },
-          },
-        ],
-      });
+      const response = await request('search', { ...prompt, ...webSearch(allowedDomains) });
       return extractSearchOutput(response.output);
+    },
+
+    async suggest(prompt, allowedDomains) {
+      const response = await request('suggest', {
+        ...prompt,
+        ...webSearch(allowedDomains),
+        text: { format: zodTextFormat(suggestionsSchema, 'suggestions') },
+      });
+      return parseJson(response.output_text);
     },
 
     async analyze(prompt) {
