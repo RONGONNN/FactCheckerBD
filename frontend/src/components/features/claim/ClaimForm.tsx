@@ -1,10 +1,16 @@
 'use client';
 
-import Link from 'next/link';
 import { useState, type FormEvent } from 'react';
 import { useLanguage } from '../../../lib/i18n/LanguageProvider';
 import { MAX_CLAIM_LENGTH } from '../../../types/api';
-import { card, focusRing, mutedText, primaryButton, secondaryButton } from '../../ui/styles';
+import {
+  card,
+  field,
+  mutedText,
+  primaryButton,
+  secondaryButton,
+  sectionTitle,
+} from '../../ui/styles';
 import { CheckProgress } from './CheckProgress';
 import { useClaimCheck } from './useClaimCheck';
 
@@ -32,7 +38,7 @@ export function ClaimForm() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold md:text-3xl">{t.claim.heading}</h1>
+      <h2 className={sectionTitle}>{t.claim.heading}</h2>
       <form onSubmit={handleSubmit} noValidate className={`${card} flex flex-col gap-3`}>
         <label htmlFor="claim" className="font-medium">
           {t.claim.label}
@@ -46,7 +52,7 @@ export function ClaimForm() {
           placeholder={t.claim.placeholder}
           aria-describedby="claim-count"
           onChange={(event) => updateClaim(event.target.value)}
-          className={`w-full rounded-lg border border-slate-300 bg-transparent p-3 dark:border-slate-700 ${focusRing}`}
+          className={`scroll-mt-40 ${field}`}
         />
         <div className="flex items-center justify-between gap-3">
           <span id="claim-count" className={mutedText}>
@@ -57,7 +63,7 @@ export function ClaimForm() {
           </button>
         </div>
         {message && (
-          <p role="alert" className="text-sm font-medium text-red-700 dark:text-red-400">
+          <p role="alert" className="text-sm font-medium text-red-700">
             {message}
           </p>
         )}
@@ -86,9 +92,6 @@ export function ClaimForm() {
       </section>
 
       <p className={mutedText}>{t.disclaimer}</p>
-      <Link href="/how-it-works" className={`self-start text-sm underline ${focusRing}`}>
-        {t.nav.howItWorks}
-      </Link>
     </div>
   );
 }
