@@ -1,0 +1,19 @@
+node_modules/
+dist/
+backend/data/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+*.log
+~$*
+
+# Local project documents, not published
+/docs/
